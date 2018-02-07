@@ -12,6 +12,7 @@ export function createReducer(initialState, reducerMap) {
         return reducer ? reducer(state, action.payload, action.meta) : state;
     };
 }
+
 /**
  * Creating an object with values equal to its keys
  * @function keyMirror
