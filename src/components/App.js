@@ -13,7 +13,7 @@ export default function App({children}) {
                 {' '}
                 <Link to="/bar">Bar</Link>
             </header>
-            <div>
+            <div style={{display:'none'}}>
                 <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
             </div>
             <div style={{marginTop: '1.5em'}}>{children}</div>
