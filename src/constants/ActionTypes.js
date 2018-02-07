@@ -13,6 +13,8 @@ const ActionTypes = keyMirror({
     RECEIVE_MODULEB_TOKEN: null,
     FAILURE_MODULEB_TOKEN: null,
 
+    INCREASE : null,
+    DECREASE : null
 });
 
 export default ActionTypes;
