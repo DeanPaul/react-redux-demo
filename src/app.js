@@ -2,48 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/configureStore";
 import {Provider} from "react-redux";
-import {Router, Route, IndexRoute,browserHistory } from "react-router";
+import {Router, Route, IndexRoute, browserHistory} from "react-router";
 import { syncHistoryWithStore } from 'react-router-redux';
 import Portal from "./containers/Portal/Portal";
-import { createBrowserHistory } from 'history';
-// import "babel-polyfill";
-class App extends React.Component {
-    render(){ // Every react component has a render method.
-        return( // Every render method returns jsx. Jsx looks like HTML, but it's actually javascript and functions a lot like xml, with self closing tags requiring the `/` within the tag in order to work propperly
-            <div>
-                Hello World
-            </div>
-        );
-    }
-}
-function getViewComponent(query) {
-    switch (query) {
-        case 'viewer':
-        case 'designer':
-        default:
-            return Portal;
-    }
-}
-
-
-const table = (location, cb) => {
-    require.ensure([], (require) => {
-        cb(null, require('./containers/Portal/Portal').default)
-    }, 'table')
-}
+import { App, Home, Foo, Bar } from './components'
+//import { createBrowserHistory } from 'history';//fix react-router 4.x issue
 
 
 const store = configureStore({
 
 });
-// const history = syncHistoryWithStore(browserHistory, store);
-const history = syncHistoryWithStore(createBrowserHistory(), store);
+ const history = syncHistoryWithStore(browserHistory, store);
+//const history = syncHistoryWithStore(createBrowserHistory(), store); //fix react-router 4.x issue
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={history}
-                >
+        <Router history={history}>
             <Route path="/" component={App}>
-                <Route path="/table" getComponent={table} />
+                <IndexRoute component={Home}/>
+                <Route path="foo" component={Foo}/>
+                <Route path="bar" component={Bar}/>
             </Route>
         </Router>
     </Provider>,
