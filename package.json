@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --colors --content-base",
+    "start":"webpack-dev-server --history-api-fallback --no-info --open",
     "build": "webpack --progress --colors"
   },
   "repository": {
