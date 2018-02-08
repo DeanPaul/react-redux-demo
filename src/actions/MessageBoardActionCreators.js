@@ -1,5 +1,7 @@
 import ActionTypes from '../constants/ActionTypes';
 
+let mockMessageList = [{id: 0, title: 'admin', owner: 'admin'}, {id: 1, title: 'admin1', owner: 'admin'}];
+
 /**
  * request a message list
  */
@@ -15,6 +17,7 @@ export function requestMessageList() {
  * @param {Object} data
  */
 export function receiveMessageList(data) {
+    data = data || mockMessageList;
     return {
         type: ActionTypes.RECEIVE_MESSAGE_LIST,
         payload: data,

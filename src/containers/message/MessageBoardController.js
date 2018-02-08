@@ -4,25 +4,31 @@ import {bindActionCreators} from "redux";
 import createDataProviders from "../../utils/createDataProviders";
 import {connect} from 'react-redux';
 import * as messageBoardActionCreators from "../../actions/MessageBoardActionCreators";
-import {MessageSearchBar, MessageList} from '../../components';
+import {MessageSearchBar, MessageList, BusyIndicator} from '../../components';
 
 
 class MessageBoardController extends Component {
 
 
     componentDidMount() {
-        //this.props.portalActions.initPortal();
+        let {requestMessageList, receiveMessageList} = this.props.messageBoardActions;
+        requestMessageList();
+        setTimeout(receiveMessageList, 1000);
     }
 
 
     components = {
+        [BusyIndicator]: () => {
+            const { messageBoard } = this.props;
+            return messageBoard.isProcessing ? {} : null;
+        },
         [MessageSearchBar]: () => {
-            const {ui} = this.props;
-            return {};
+            const {data} = this.props.messageBoard;
+            return {data};
         },
         [MessageList]: () => {
-            const {ui} = this.props;
-            return {};
+            const {data} = this.props.messageBoard;
+            return {data};
         },
     };
 
@@ -37,11 +43,11 @@ class MessageBoardController extends Component {
 
 
 const mapStateToProps = (state) => ({
-    auth: state.auth,
+    messageBoard: state.MessageBoard,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    authActions: bindActionCreators(messageBoardActionCreators, dispatch),
+    messageBoardActions: bindActionCreators(messageBoardActionCreators, dispatch),
 });
 
 
