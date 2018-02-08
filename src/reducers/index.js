@@ -1,13 +1,11 @@
 import {combineReducers} from 'redux';
-import moduleA from './moduleA';
-import moduleB from './moduleB';
-import count from './count';
+import MessageBoard from './MessageBoard';
+import Todo from './Todo';
 import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
-    moduleA,
-    moduleB,
-    count,
+    MessageBoard,
+    Todo,
     routing: routerReducer
 });
 

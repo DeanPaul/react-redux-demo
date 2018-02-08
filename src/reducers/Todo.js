@@ -15,26 +15,25 @@ const initialState = {
 
 
 /**
- * ## MODULEB Reducers
+ * ## Todo Reducers
  */
 export default createReducer(initialState, {
 
     /**
-     * Request REQUEST_MODULEB_TOKEN
+     * Request REQUEST_TODO_LIST
      */
-    [ActionTypes.REQUEST_MODULEB_TOKEN]: (state) =>
+    [ActionTypes.REQUEST_TODO_LIST]: (state) =>
         Object.assign({}, state, {
             isProcessing: true,
         }),
 
     /**
-     * Receive RECEIVE_MODULEB_TOKEN
+     * Receive RECEIVE_TODO_LIST
      */
-    [ActionTypes.RECEIVE_MODULEB_TOKEN]: (state, payload, meta) => {
-        const documentPermissions = payload.permissions || [];
+    [ActionTypes.RECEIVE_TODO_LIST]: (state, payload, meta) => {
         return Object.assign({}, state, {
             isProcessing: false,
-            data: documentPermissions,
+            data: payload,
 
         });
     },

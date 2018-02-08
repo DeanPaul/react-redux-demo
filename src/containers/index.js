@@ -1,6 +1,8 @@
-import Address from './address/Address';
+import MessageBoard from './message/MessageBoard';
+import Todo from './todo/Todo';
 
 
 export {
-    Address
+    MessageBoard,
+    Todo
 }

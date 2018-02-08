@@ -3,14 +3,12 @@ import React, {PropTypes, Component} from "react";
 import {bindActionCreators} from "redux";
 import createDataProviders from "../../utils/createDataProviders";
 import {connect} from 'react-redux';
-import * as authActionCreators from "../../actions/AuthActionCreators";
+import * as messageBoardActionCreators from "../../actions/MessageBoardActionCreators";
+import {MessageSearchBar, MessageList} from '../../components';
 
-import AddressList from "../../components/address/AddressList";
 
+class MessageBoardController extends Component {
 
-class AddressController extends Component {
-
-    state = {docContextMenu: null};
 
     componentDidMount() {
         //this.props.portalActions.initPortal();
@@ -18,9 +16,13 @@ class AddressController extends Component {
 
 
     components = {
-        [AddressList]: () => {
+        [MessageSearchBar]: () => {
             const {ui} = this.props;
-            return ui.isBusy ? {} : null;
+            return {};
+        },
+        [MessageList]: () => {
+            const {ui} = this.props;
+            return {};
         },
     };
 
@@ -33,27 +35,17 @@ class AddressController extends Component {
     }
 }
 
-AddressController.propTypes = {
-    children: PropTypes.element,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    uiSettings: PropTypes.object,
-
-    // Action Creators
-    authActions: PropTypes.object,
-
-};
 
 const mapStateToProps = (state) => ({
     auth: state.auth,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    authActions: bindActionCreators(authActionCreators, dispatch),
+    authActions: bindActionCreators(messageBoardActionCreators, dispatch),
 });
 
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AddressController);
+)(MessageBoardController);

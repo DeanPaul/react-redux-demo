@@ -1,11 +1,15 @@
 import App from './App';
 import Home from './Home';
-import Foo from './Foo';
-import Bar from './Bar';
+import MessageList from './message/MessageList';
+import MessageSearchBar from './message/MessageSearchBar';
+import TodoList from './todo/TodoList';
+import TodoBar from './todo/TodoBar';
 
 export {
     App,
     Home,
-    Foo,
-    Bar
+    MessageList,
+    MessageSearchBar,
+    TodoBar,
+    TodoList
 }

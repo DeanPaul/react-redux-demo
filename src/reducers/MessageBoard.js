@@ -20,21 +20,20 @@ const initialState = {
 export default createReducer(initialState, {
 
     /**
-     * Request REQUEST_MODULEA_TOKEN
+     * Request REQUEST_MESSAGE_LIST
      */
-    [ActionTypes.REQUEST_MODULEA_TOKEN]: (state) =>
+    [ActionTypes.REQUEST_MESSAGE_LIST]: (state) =>
         Object.assign({}, state, {
             isProcessing: true,
         }),
 
     /**
-     * Receive RECEIVE_MODULEA_TOKEN
+     * Receive RECEIVE_MESSAGE_LIST
      */
-    [ActionTypes.RECEIVE_MODULEA_TOKEN]: (state, payload, meta) => {
-        const documentPermissions = payload.permissions || [];
+    [ActionTypes.RECEIVE_MESSAGE_LIST]: (state, payload, meta) => {
         return Object.assign({}, state, {
             isProcessing: false,
-            data: documentPermissions,
+            data: payload,
 
         });
     },
