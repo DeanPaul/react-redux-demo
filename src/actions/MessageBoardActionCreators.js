@@ -1,6 +1,7 @@
 import ActionTypes from '../constants/ActionTypes';
+import Immutable from 'immutable';
 
-let mockMessageList = [{id: 0, title: 'admin', owner: 'admin'}, {id: 1, title: 'admin1', owner: 'admin'}];
+let mockMessageList = Immutable.fromJS([{id: 0, title: 'admin', owner: 'admin'}, {id: 1, title: 'admin1', owner: 'admin'}]);
 
 /**
  * request a message list

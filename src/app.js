@@ -7,8 +7,16 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import {App, Home} from './components'
 //import { createBrowserHistory } from 'history';//fix react-router 4.x issue
 import {Todo, MessageBoard} from './containers'
-const store = configureStore({});
-const history = syncHistoryWithStore(browserHistory, store);
+import Immutable from 'immutable';
+const store = configureStore(Immutable.Map({}));
+//const history = syncHistoryWithStore(browserHistory, store);
+
+
+const history = syncHistoryWithStore(browserHistory, store, {
+    selectLocationState (state) {
+        return state.get('routing')
+    }
+})
 //const history = syncHistoryWithStore(createBrowserHistory(), store); //fix react-router 4.x issue
 ReactDOM.render(
     <Provider store={store}>

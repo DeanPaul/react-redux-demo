@@ -20,14 +20,14 @@ class MessageBoardController extends Component {
     components = {
         [BusyIndicator]: () => {
             const { messageBoard } = this.props;
-            return messageBoard.isProcessing ? {} : null;
+            return messageBoard.get('isProcessing') ? {} : null;
         },
         [MessageSearchBar]: () => {
-            const {data} = this.props.messageBoard;
+            const data = this.props.messageBoard.get('data');
             return {data};
         },
         [MessageList]: () => {
-            const {data} = this.props.messageBoard;
+            const data = this.props.messageBoard.get('data');
             return {data};
         },
     };
@@ -43,7 +43,8 @@ class MessageBoardController extends Component {
 
 
 const mapStateToProps = (state) => ({
-    messageBoard: state.MessageBoard,
+//state.getIn(['dish', 'cartList'])
+    messageBoard: state.get('MessageBoard'),
 });
 
 const mapDispatchToProps = (dispatch) => ({

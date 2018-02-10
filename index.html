@@ -6,9 +6,55 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/navbars/navbar.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+        body {
+            background: #EFF0F1;
+        }
+        #app {
+            height:100%;
+        }
+        #root [data-reactroot]{
+            height:100%;
+        }
+        #l_root {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            background: #EFF0F1;
+            z-index: 100;
+        }
+        #l_cnt {
+            position: relative;
+            top: 45%;
+            width: 25%;
+            margin: auto;
+            min-width: 240px;
+            max-width: 320px;
+        }
+        #l_anim {
+            font-size: 24px;
+            text-align: center;
+            margin: 30px;
+            color: #D4D8E2;
+        }
+    </style>
 </head>
 <body>
-<div id="app"></div>
+<div id="app">
+    <div id="l_root" role="progressbar">
+        <div id="l_cnt">
+            <div id="l_anim">
+                    <span class="fa-stack">
+                        <i class="fa fa-refresh fa-spin fa-stack-1x"></i>
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="bundle.js"></script>
 </body>
 </html>

@@ -1,7 +1,8 @@
 import {createReducer} from '../utils/index';
 import ActionTypes from '../constants/ActionTypes';
+import Immutable from 'immutable';
 
-const initialState = {
+const initialState = Immutable.Map( {
     isProcessing: false,
     data: [],
     access: {
@@ -11,7 +12,7 @@ const initialState = {
         canDelete: false,
         canChange: false,
     },
-};
+});
 
 
 /**
@@ -23,18 +24,15 @@ export default createReducer(initialState, {
      * Request REQUEST_MESSAGE_LIST
      */
     [ActionTypes.REQUEST_MESSAGE_LIST]: (state) =>
-        Object.assign({}, state, {
-            isProcessing: true,
-        }),
+        state.set('isProcessing', true),
 
     /**
      * Receive RECEIVE_MESSAGE_LIST
      */
     [ActionTypes.RECEIVE_MESSAGE_LIST]: (state, payload, meta) => {
-        return Object.assign({}, state, {
+        return state.merge({
             isProcessing: false,
-            data: payload,
-
+            data: payload
         });
     },
 });

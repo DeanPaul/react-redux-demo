@@ -34,7 +34,7 @@ class TodoController extends Component {
 
 
 const mapStateToProps = (state) => ({
-    auth: state.auth,
+    auth: state.get('auth'),
 });
 
 const mapDispatchToProps = (dispatch) => ({

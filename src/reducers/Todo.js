@@ -1,7 +1,8 @@
 import {createReducer} from '../utils/index';
 import ActionTypes from '../constants/ActionTypes';
+import Immutable from 'immutable';
 
-const initialState = {
+const initialState = Immutable.Map({
     isProcessing: false,
     data: [],
     access: {
@@ -11,7 +12,7 @@ const initialState = {
         canDelete: false,
         canChange: false,
     },
-};
+});
 
 
 /**
