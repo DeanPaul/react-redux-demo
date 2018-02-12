@@ -22,9 +22,16 @@ class MessageBoardController extends Component {
             const { messageBoard } = this.props;
             return messageBoard.isProcessing ? {} : null;
         },
-        [MessageSearchBar]: () => {
-            const {data} = this.props.messageBoard;
-            return {data};
+        [MessageSearchBar]: (instance) => {
+            const test = {
+                  ["TestA"]: {
+                      hidden: 'sdsdsd',
+                  },
+                  ["TestC"]: {
+                      hidden: 'C',
+                  }
+            };
+            return Object.assign({}, test[instance.props.id] || instance.props);
         },
         [MessageList]: () => {
             const {data} = this.props.messageBoard;
