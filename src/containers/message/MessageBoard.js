@@ -5,7 +5,8 @@ import {MessageSearchBar, MessageList, MessageFooter,BusyIndicator} from '../../
 const MessageBoard = (props) => (
     <MessageBoardController {...props}>
         <BusyIndicator/>
-        <MessageSearchBar/>
+        <MessageSearchBar id="TestA"/>
+        <MessageSearchBar id="TestC"/>
         <MessageList/>
         <MessageFooter/>
     </MessageBoardController>
