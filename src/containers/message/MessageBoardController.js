@@ -31,7 +31,7 @@ class MessageBoardController extends Component {
                       hidden: 'C',
                   }
             };
-            return Object.assign({}, test[instance.props.id] || instance.props);
+            return test[instance.props.id];
         },
         [MessageList]: () => {
             const data = this.props.messageBoard.get('data');
