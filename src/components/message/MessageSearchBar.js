@@ -5,7 +5,7 @@ class MessageSearchBar extends Component {
 
     render() {
         return (
-            <div>MessageSearchBar</div>
+            <div>{this.props.hidden}</div>
         );
     }
 }
