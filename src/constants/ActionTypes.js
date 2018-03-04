@@ -8,6 +8,7 @@ const ActionTypes = keyMirror({
     RECEIVE_MESSAGE_LIST: null,
     FAILURE_MESSAGE_LIST: null,
 
+    REFRESH_MESSAGE:null,
     // ModuleTODO
 
     REQUEST_TODO_LIST: null,

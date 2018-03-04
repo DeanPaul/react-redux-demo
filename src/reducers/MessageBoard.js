@@ -37,4 +37,13 @@ export default createReducer(initialState, {
 
         });
     },
+
+    [ActionTypes.REFRESH_MESSAGE]: (state, payload) => {
+        return Object.assign({}, state, {
+            isProcessing: false,
+            data: payload,
+
+        });
+    },
+
 });

@@ -5,18 +5,30 @@ import createDataProviders from "../../utils/createDataProviders";
 import {connect} from 'react-redux';
 import * as messageBoardActionCreators from "../../actions/MessageBoardActionCreators";
 import {MessageSearchBar, MessageList, BusyIndicator} from '../../components';
-
+import Perf from 'react-addons-perf';
 
 class MessageBoardController extends Component {
 
-
+    constructor(props) {
+        super(props);
+        this.refreshMessage = this.refreshMessage.bind(this);
+    }
     componentDidMount() {
         let {requestMessageList, receiveMessageList} = this.props.messageBoardActions;
         requestMessageList();
         setTimeout(receiveMessageList, 1000);
     }
 
-
+    componentDidUpdate(){
+        Perf.stop();
+//        Perf.printInclusive();
+//        Perf.printExclusive();
+        Perf.printWasted();
+    }
+    refreshMessage(){
+        Perf.start();
+        this.props.messageBoardActions.refreshMessage();
+    }
     components = {
         [BusyIndicator]: () => {
             const { messageBoard } = this.props;
@@ -25,10 +37,12 @@ class MessageBoardController extends Component {
         [MessageSearchBar]: (instance) => {
             const test = {
                   ["TestA"]: {
-                      hidden: 'sdsdsd',
+                      hidden: 'TestA',
+                      clickBar:this.refreshMessage
                   },
                   ["TestC"]: {
-                      hidden: 'C',
+                      hidden: 'TestC',
+                      clickBar:this.refreshMessage
                   }
             };
             return Object.assign({}, test[instance.props.id] || instance.props);

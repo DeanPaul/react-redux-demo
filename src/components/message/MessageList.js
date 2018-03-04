@@ -8,6 +8,7 @@ class MessageList extends Component {
             <td>{item.id}</td>
             <td>{item.title}</td>
             <td>{item.owner}</td>
+            <td>{item.number}</td>
         </tr>)
     }
 
@@ -18,6 +19,7 @@ class MessageList extends Component {
                     <th>ID</th>
                     <th>Title</th>
                     <th>Owner</th>
+                    <th>Number</th>
                 </tr>
                 {this.renderContent()}
             </table>

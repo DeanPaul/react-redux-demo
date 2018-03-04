@@ -5,7 +5,7 @@ class MessageSearchBar extends Component {
 
     render() {
         return (
-            <div>{this.props.hidden}</div>
+            <div onClick={this.props.clickBar}>{this.props.hidden}</div>
         );
     }
 }
